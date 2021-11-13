@@ -140,7 +140,7 @@ export default {
               &__input {
                 appearance: none;
                 &:checked + .task__label::before {
-                  background-color: #feb567;
+                  background-color: $rajah;
                 }
                 &:checked + .task__label::after {
                   opacity: 1;
@@ -160,7 +160,7 @@ export default {
                   display: block;
                   width: 1.5rem;
                   height: 1.5rem;
-                  border: 0.125rem solid #feb567;
+                  border: 0.125rem solid $rajah;
                   border-radius: 0.25rem;
                   position: absolute;
                   left: 0;
@@ -168,6 +168,9 @@ export default {
                   transform: translateY(-50%);
                   transition: background-color 0.5s ease;
                   outline: none;
+                  .task__input:checked & {
+                    background-color: $rajah;
+                  }
                 }
                 &::after {
                   content: "";
@@ -181,6 +184,9 @@ export default {
                   top: 50%;
                   transform: translateY(-50%);
                   transition: opacity 0.5s ease;
+                  .task__input:checked & {
+                    opacity: 1;
+                  }
                 }
               }
               &__btn {
@@ -235,7 +241,7 @@ export default {
             padding: 0.75rem 1rem;
             width: 100%;
             outline: none;
-            background: #ffecd8;
+            background: $serenade;
             border: 0.125rem dashed $peachOrange;
             border-radius: 0.625rem;
             font-family: "Inter", sans-serif;
@@ -272,7 +278,7 @@ export default {
             margin-right: 1rem;
             font-size: 1.25rem;
             line-height: 1.75rem;
-            color: rgba(127, 75, 19, 0.42);
+            color: $twineOpacity;
             @include breakpoint($sm) {
               width: 100%;
               text-align: center;
