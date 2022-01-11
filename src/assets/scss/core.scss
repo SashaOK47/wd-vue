@@ -13,12 +13,12 @@ html {
   }
 }
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1rem;
 }
-.page-container {
+.container {
   @include min-max(20rem, 100%, 0);
 }
-.page-wrapper {
-  @include min-max(20rem, 65.625rem, 4rem);
+.wrapper {
+  @include min-max(20rem, 65.625rem, 1rem);
 }
