@@ -1,14 +1,14 @@
 <template>
-  <form class="add-task">
+  <form :class="$style.addTask">
     <input type="text" placeholder="Add a new task" />
   </form>
 </template>
 <script>
 export default {};
 </script>
-<style lang="scss">
+<style lang="scss" module>
 @import "@/assets/scss/main.scss";
-.add-task {
+.addTask {
   input {
     padding: 0.75rem 1rem;
     width: 100%;
@@ -19,7 +19,7 @@ export default {};
     font-family: "Inter", sans-serif;
     font-size: 1.25rem;
     line-height: 1.75rem;
-    color: $mainColor;
+    color: $mainFontColor;
     text-align: center;
     &::placeholder {
       font-family: "Inter", sans-serif;

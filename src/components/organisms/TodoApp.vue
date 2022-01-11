@@ -1,5 +1,5 @@
 <template>
-  <div class="todo-app">
+  <div :class="$style.todoApp">
     <Header />
     <Content />
     <Footer />
@@ -13,9 +13,9 @@ export default {
   components: { Header, Content, Footer },
 };
 </script>
-<style lang="scss">
+<style lang="scss" module>
 @import "@/assets/scss/main.scss";
-.todo-app {
+.todoApp {
   width: 33.75rem;
   display: flex;
   flex-direction: column;

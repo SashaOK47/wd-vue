@@ -7,15 +7,15 @@
 </template>
 
 <script>
-import TodoApp from "@/components/organisms/TodoApp";
+import TodoApp from '@/components/organisms/TodoApp';
 export default {
-  name: "App",
+  name: 'App',
   components: { TodoApp },
 };
 </script>
 
 <style lang="scss" module>
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 .container {
   background: linear-gradient(104.11deg, $rajah 14.52%, $colar 87.26%);
   .wrapper {
@@ -23,7 +23,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url("./assets/img/list.svg") center right no-repeat;
+    background: url('./assets/img/list.svg') center right no-repeat;
     @include breakpoint($md) {
       background: none;
     }

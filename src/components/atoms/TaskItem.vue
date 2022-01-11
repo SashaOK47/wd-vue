@@ -1,11 +1,11 @@
 <template>
-  <li class="task">
-    <label class="task__label">
-      <input class="task__input" type="checkbox" :checked="isCompleted" />
-      <span class="task__box"></span>
+  <li :class="$style.task">
+    <label :class="$style.taskLabel">
+      <input :class="$style.taskInput" type="checkbox" :checked="isCompleted" />
+      <span :class="$style.taskBox"></span>
       {{ title }}
     </label>
-    <button class="task__btn" aria-label="remove-task"></button>
+    <button :class="$style.taskBtn" aria-label="remove-task"></button>
   </li>
 </template>
 <script>
@@ -22,7 +22,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" module>
 @import "@/assets/scss/main.scss";
 .task {
   padding: 0.75rem 1.25rem;
@@ -31,7 +31,7 @@ export default {
   align-items: center;
   background: $karry;
   border-radius: 0.625rem;
-  &__label {
+  .taskLabel {
     flex: 1 1 auto;
     padding-left: 2.65rem;
     padding-right: 1rem;
@@ -41,16 +41,16 @@ export default {
     position: relative;
     cursor: pointer;
   }
-  &__input {
+  .taskInput {
     appearance: none;
-    &:checked + .task__box {
+    &:checked + .taskBox {
       background: $rajah url(../../assets/img/check.svg) center no-repeat;
     }
-    &:focus + .task__box {
-      border: 0.15rem solid $twineOpacity;
+    &:focus-visible + .taskBox {
+      box-shadow: 0 0 0 2px $colorFocus;
     }
   }
-  &__box {
+  .taskBox {
     display: block;
     width: 1.5rem;
     height: 1.5rem;
@@ -61,8 +61,9 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     transition: background-color 0.5s;
+    outline: none;
   }
-  &__btn {
+  .taskBtn {
     display: flex;
     flex-shrink: 0;
     justify-content: center;
@@ -92,8 +93,11 @@ export default {
     &:before {
       transform: translate(-50%, -50%) rotate(45deg);
     }
-    &:hover,
     &:focus {
+      box-shadow: 0 0 0 2px $colorFocus;
+    }
+    &:hover,
+    &:active {
       border-color: $carrotOrange;
       &::after {
         background-color: $carrotOrange;

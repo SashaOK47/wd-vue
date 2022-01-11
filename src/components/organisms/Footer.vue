@@ -1,16 +1,16 @@
 <template>
-  <footer class="footer">
-    <p class="footer__count">1/3 left</p>
-    <Tabs />
+  <footer :class="$style.footer">
+    <p :class="$style.footerCount">1/3 left</p>
+    <FilterTask />
   </footer>
 </template>
 <script>
-import Tabs from "@/components/molecules/Tabs";
+import FilterTask from "@/components/molecules/FilterTask";
 export default {
-  components: { Tabs },
+  components: { FilterTask },
 };
 </script>
-<style lang="scss">
+<style lang="scss" module>
 @import "@/assets/scss/main.scss";
 .footer {
   padding: 0.4rem 1.8rem;
@@ -23,7 +23,7 @@ export default {
     justify-content: center;
   }
 
-  &__count {
+  .footerCount {
     margin-right: 1rem;
     font-size: 1.25rem;
     line-height: 1.75rem;

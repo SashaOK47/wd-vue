@@ -1,5 +1,5 @@
 <template>
-  <ul class="tasks">
+  <ul :class="$style.tasks">
     <TaskItem
       v-for="task in tasks"
       :key="task.id"
@@ -9,7 +9,7 @@
   </ul>
 </template>
 <script>
-import TaskItem from "@/components/atoms/TaskItem";
+import TaskItem from '@/components/atoms/TaskItem';
 export default {
   components: { TaskItem },
   data() {
@@ -17,17 +17,17 @@ export default {
       tasks: [
         {
           id: 1,
-          title: "Task 1",
+          title: 'Task 1',
           isCompleted: true,
         },
         {
           id: 2,
-          title: "Task 2",
+          title: 'Task 2',
           isCompleted: false,
         },
         {
           id: 3,
-          title: "Task 2",
+          title: 'Task 2',
           isCompleted: false,
         },
       ],
@@ -35,8 +35,8 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-@import "@/assets/scss/main.scss";
+<style lang="scss" module>
+@import '@/assets/scss/main.scss';
 .tasks {
   list-style: none;
   width: 100%;

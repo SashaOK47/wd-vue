@@ -1,18 +1,18 @@
 <template>
-  <div class="tabs">
-    <label class="tab">
-      <input class="tab__input" type="radio" name="tab" checked />
-      <span class="tab__box"></span>
+  <div :class="$style.filter">
+    <label :class="$style.filterLabel">
+      <input :class="$style.filterInput" type="radio" name="tab" checked />
+      <span :class="$style.filterBox"></span>
       All
     </label>
-    <label class="tab">
-      <input class="tab__input" type="radio" name="tab" />
-      <span class="tab__box"></span>
+    <label :class="$style.filterLabel">
+      <input :class="$style.filterInput" type="radio" name="tab" />
+      <span :class="$style.filterBox"></span>
       Active
     </label>
-    <label class="tab">
-      <input class="tab__input" type="radio" name="tab" />
-      <span class="tab__box"></span>
+    <label :class="$style.filterLabel">
+      <input :class="$style.filterInput" type="radio" name="tab" />
+      <span :class="$style.filterBox"></span>
       Completed
     </label>
   </div>
@@ -20,15 +20,15 @@
 <script>
 export default {};
 </script>
-<style lang="scss">
+<style lang="scss" module>
 @import "@/assets/scss/main.scss";
-.tabs {
+.filter {
   text-align: center;
   position: relative;
   @include breakpoint($sm) {
     width: 100%;
   }
-  .tab {
+  .filterLabel {
     position: relative;
     display: inline-block;
     padding: 0.35rem 0.6rem;
@@ -38,17 +38,17 @@ export default {};
     background-color: transparent;
     cursor: pointer;
   }
-  .tab:not(:last-child) {
+  .filterLabel:not(:last-child) {
     margin-right: 1.5rem;
     @include breakpoint($sm) {
       margin-right: 0.75rem;
     }
   }
-  .tab__input {
+  .filterInput {
     appearance: none;
     position: absolute;
   }
-  .tab__box {
+  .filterBox {
     position: absolute;
     top: 0;
     left: 0;
@@ -58,11 +58,11 @@ export default {};
     border-radius: 0.625rem;
     transition: border-color 0.5s;
   }
-  .tab__input:checked + .tab__box {
+  .filterInput:checked + .filterBox {
     border-color: $twine;
   }
-  .tab__input:focus + .tab__box {
-    border-width: 0.2rem;
+  .filterInput:focus-visible + .filterBox {
+    box-shadow: 0 0 0 2px $colorFocus;
   }
 }
 </style>
