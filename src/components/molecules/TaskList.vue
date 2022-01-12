@@ -38,6 +38,8 @@ export default {
 <style lang="scss" module>
 @import '@/assets/scss/main.scss';
 .tasks {
+  max-height: 300px;
+  overflow-y: auto;
   list-style: none;
   width: 100%;
 }

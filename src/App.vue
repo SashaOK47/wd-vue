@@ -17,6 +17,7 @@ export default {
 <style lang="scss" module>
 @import '@/assets/scss/main.scss';
 .container {
+  overflow: hidden;
   background: linear-gradient(
     104.11deg,
     $orangeLight 14.52%,
