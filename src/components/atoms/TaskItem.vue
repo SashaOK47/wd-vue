@@ -23,19 +23,19 @@ export default {
 };
 </script>
 <style lang="scss" module>
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 .task {
   padding: 0.75rem 1.25rem;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  background: $karry;
+  background: $accent;
   border-radius: 0.625rem;
   .taskLabel {
     flex: 1 1 auto;
     padding-left: 2.65rem;
     padding-right: 1rem;
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.25rem;
     line-height: 1.75rem;
     position: relative;
@@ -44,7 +44,7 @@ export default {
   .taskInput {
     appearance: none;
     &:checked + .taskBox {
-      background: $rajah url(../../assets/img/check.svg) center no-repeat;
+      background: $orangeLight url(../../assets/img/check.svg) center no-repeat;
     }
     &:focus-visible + .taskBox {
       box-shadow: 0 0 0 2px $colorFocus;
@@ -54,7 +54,7 @@ export default {
     display: block;
     width: 1.5rem;
     height: 1.5rem;
-    border: 0.125rem solid $rajah;
+    border: 0.125rem solid $orangeLight;
     border-radius: 0.25rem;
     position: absolute;
     left: 0;
@@ -72,19 +72,19 @@ export default {
     height: 1.5rem;
     position: relative;
     background: none;
-    border: 0.125rem solid $peachOrange;
+    border: 0.125rem solid $accentDarker;
     border-radius: 0.25rem;
     cursor: pointer;
     transition: border-color 0.5s;
     &::after,
     &::before {
-      content: "";
+      content: '';
       width: 0.75rem;
       height: 0.125rem;
       position: absolute;
       left: 50%;
       top: 50%;
-      background-color: $peachOrange;
+      background-color: $accentDarker;
       transition: background-color 0.5s;
     }
     &::after {
@@ -98,12 +98,12 @@ export default {
     }
     &:hover,
     &:active {
-      border-color: $carrotOrange;
+      border-color: $orange;
       &::after {
-        background-color: $carrotOrange;
+        background-color: $orange;
       }
       &::before {
-        background-color: $carrotOrange;
+        background-color: $orange;
       }
     }
   }

@@ -5,20 +5,20 @@
   </footer>
 </template>
 <script>
-import FilterTask from "@/components/molecules/FilterTask";
+import FilterTask from '@/components/molecules/FilterTask';
 export default {
   components: { FilterTask },
 };
 </script>
 <style lang="scss" module>
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 .footer {
   padding: 0.4rem 1.8rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background-color: $peachOrange;
+  background-color: $accentDarker;
   @include breakpoint($sm) {
     justify-content: center;
   }
@@ -27,7 +27,7 @@ export default {
     margin-right: 1rem;
     font-size: 1.25rem;
     line-height: 1.75rem;
-    color: $twineOpacity;
+    color: $mainFontColorOpacity;
     @include breakpoint($sm) {
       width: 100%;
       text-align: center;

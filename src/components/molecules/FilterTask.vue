@@ -21,7 +21,7 @@
 export default {};
 </script>
 <style lang="scss" module>
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 .filter {
   text-align: center;
   position: relative;
@@ -34,7 +34,7 @@ export default {};
     padding: 0.35rem 0.6rem;
     font-size: 1.25rem;
     line-height: 1.75rem;
-    color: rgba(127, 75, 19, 0.42);
+    color: $mainFontColorOpacity;
     background-color: transparent;
     cursor: pointer;
   }
@@ -59,7 +59,7 @@ export default {};
     transition: border-color 0.5s;
   }
   .filterInput:checked + .filterBox {
-    border-color: $twine;
+    border-color: $borderFilterColor;
   }
   .filterInput:focus-visible + .filterBox {
     box-shadow: 0 0 0 2px $colorFocus;

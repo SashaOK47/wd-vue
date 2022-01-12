@@ -7,28 +7,28 @@
 export default {};
 </script>
 <style lang="scss" module>
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 .addTask {
   input {
     padding: 0.75rem 1rem;
     width: 100%;
     outline: none;
-    background: $serenade;
-    border: 0.125rem dashed $peachOrange;
+    background: $inputBgColor;
+    border: 0.125rem dashed $accentDarker;
     border-radius: 0.625rem;
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.25rem;
     line-height: 1.75rem;
     color: $mainFontColor;
     text-align: center;
     &::placeholder {
-      font-family: "Inter", sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1.25rem;
       line-height: 1.75rem;
-      color: $peachOrange;
+      color: $accentDarker;
     }
     &:focus {
-      border: 0.125rem solid $carrotOrange;
+      border: 0.125rem solid $orange;
     }
   }
 }

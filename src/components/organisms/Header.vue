@@ -7,9 +7,9 @@
 export default {};
 </script>
 <style lang="scss" module>
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 .header {
-  background-color: $peachOrange;
+  background-color: $accentDarker;
   .title {
     padding: 0.75rem 0;
     display: flex;

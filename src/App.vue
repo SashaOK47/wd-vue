@@ -17,7 +17,11 @@ export default {
 <style lang="scss" module>
 @import '@/assets/scss/main.scss';
 .container {
-  background: linear-gradient(104.11deg, $rajah 14.52%, $colar 87.26%);
+  background: linear-gradient(
+    104.11deg,
+    $orangeLight 14.52%,
+    $orangeDark 87.26%
+  );
   .wrapper {
     height: 100vh;
     display: flex;
