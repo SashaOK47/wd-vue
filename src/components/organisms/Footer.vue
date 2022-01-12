@@ -1,13 +1,13 @@
 <template>
   <footer :class="$style.footer">
     <p :class="$style.footerCount">1/3 left</p>
-    <FilterTask />
+    <Tabs />
   </footer>
 </template>
 <script>
-import FilterTask from '@/components/molecules/FilterTask';
+import Tabs from '@/components/molecules/Tabs';
 export default {
-  components: { FilterTask },
+  components: { Tabs },
 };
 </script>
 <style lang="scss" module>
