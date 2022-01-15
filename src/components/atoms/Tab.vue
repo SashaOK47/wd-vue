@@ -5,12 +5,14 @@
       type="radio"
       name="tab"
       :checked="isChecked"
+      @click="filter"
     />
     <span :class="$style.tabBox"></span>
     {{ title }}
   </label>
 </template>
 <script>
+import { mapMutations } from 'vuex';
 export default {
   props: {
     title: {
@@ -20,6 +22,12 @@ export default {
     isChecked: {
       type: Boolean,
       required: true,
+    },
+  },
+  methods: {
+    ...mapMutations(['filterTasks']),
+    filter() {
+      this.filterTasks(this.title);
     },
   },
 };

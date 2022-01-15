@@ -1,46 +1,61 @@
 <template>
-  <ul :class="$style.tasks">
-    <TaskItem
-      v-for="task in tasks"
-      :key="task.id"
-      :title="task.title"
-      :isCompleted="task.isCompleted"
-    />
+  <ul class="tasks">
+    <div class="tasks__empty" v-if="getTasksFiltered.length < 1">
+      The task list is empty! Add a new task!
+    </div>
+    <transition-group name="task">
+      <TaskItem
+        v-for="(task, index) in getTasksFiltered"
+        :key="task.id"
+        :title="task.title"
+        :id="task.id"
+        :isCompleted="task.isCompleted"
+        :index="index"
+      />
+    </transition-group>
   </ul>
 </template>
 <script>
 import TaskItem from '@/components/atoms/TaskItem';
+import { mapGetters } from 'vuex';
 export default {
   components: { TaskItem },
-  data() {
-    return {
-      tasks: [
-        {
-          id: 1,
-          title: 'Task 1',
-          isCompleted: true,
-        },
-        {
-          id: 2,
-          title: 'Task 2',
-          isCompleted: false,
-        },
-        {
-          id: 3,
-          title: 'Task 2',
-          isCompleted: false,
-        },
-      ],
-    };
-  },
+  computed: mapGetters(['getTasksFiltered']),
 };
 </script>
-<style lang="scss" module>
+<style lang="scss">
 @import '@/assets/scss/main.scss';
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: $orangeLight;
+  border-radius: 9rem;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $orange;
+  border-radius: 9em;
+}
 .tasks {
-  max-height: 300px;
+  padding-right: 0.5rem;
+  max-height: 21rem;
+  min-height: 15rem;
   overflow-y: auto;
   list-style: none;
   width: 100%;
+  &__empty {
+    padding: 1rem;
+    font-size: 2rem;
+    line-height: 2.3rem;
+    color: $mainFontColorOpacity;
+    text-align: center;
+  }
+}
+.task-enter-active,
+.task-leave-to {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.task-enter,
+.task-leave-to {
+  opacity: 0;
+  transform: translatex(-30px);
 }
 </style>
