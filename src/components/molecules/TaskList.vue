@@ -3,7 +3,7 @@
     <div class="tasks__empty" v-if="getTasksFiltered.length < 1">
       The task list is empty! Add a new task!
     </div>
-    <transition-group name="task">
+    <transition-group name="tasks">
       <TaskItem
         v-for="task in getTasksFiltered"
         :key="task.id"
@@ -48,12 +48,12 @@ export default {
     text-align: center;
   }
 }
-.task-enter-active,
-.task-leave-to {
+.tasks-enter-active,
+.tasks-leave-to {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.task-enter,
-.task-leave-to {
+.tasks-enter,
+.tasks-leave-to {
   opacity: 0;
   transform: translatex(-30px);
 }
