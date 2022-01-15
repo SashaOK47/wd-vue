@@ -1,13 +1,18 @@
 <template>
   <footer :class="$style.footer">
-    <p :class="$style.footerCount">1/3 left</p>
+    <p :class="$style.footerCount">
+      <span v-if="getCompleted">{{ getCompleted }}/</span
+      ><span v-if="getTasksCount">{{ getTasksCount }} left</span>
+    </p>
     <Tabs />
   </footer>
 </template>
 <script>
 import Tabs from '@/components/molecules/Tabs';
+import { mapGetters } from 'vuex';
 export default {
   components: { Tabs },
+  computed: mapGetters(['getTasksCount', 'getCompleted']),
 };
 </script>
 <style lang="scss" module>

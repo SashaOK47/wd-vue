@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.tabs">
     <Tab
-      v-for="tabItem in tabs"
+      v-for="tabItem in getTabs"
       :key="tabItem.title"
       :title="tabItem.title"
       :isChecked="tabItem.isChecked"
@@ -10,27 +10,13 @@
 </template>
 <script>
 import Tab from '@/components/atoms/Tab';
+import { mapGetters } from 'vuex';
 export default {
   components: {
     Tab,
   },
-  data() {
-    return {
-      tabs: [
-        {
-          title: 'All',
-          isChecked: true,
-        },
-        {
-          title: 'Active',
-          isChecked: false,
-        },
-        {
-          title: 'Completed',
-          isChecked: false,
-        },
-      ],
-    };
+  computed: {
+    ...mapGetters(['getTabs']),
   },
 };
 </script>

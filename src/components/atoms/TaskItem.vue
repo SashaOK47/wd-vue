@@ -1,16 +1,30 @@
 <template>
   <li :class="$style.task">
     <label :class="$style.taskLabel">
-      <input :class="$style.taskInput" type="checkbox" :checked="isCompleted" />
+      <input
+        :class="$style.taskInput"
+        type="checkbox"
+        :checked="isCompleted"
+        @change="checkedTask"
+      />
       <span :class="$style.taskBox"></span>
-      {{ title }}
+      <span :class="$style.taskLine">{{ title }}</span>
     </label>
-    <button :class="$style.taskBtn" aria-label="remove-task"></button>
+    <button
+      :class="$style.taskBtn"
+      aria-label="remove-task"
+      @click="deleteTask"
+    ></button>
   </li>
 </template>
 <script>
+import { mapMutations } from 'vuex';
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
@@ -18,6 +32,15 @@ export default {
     isCompleted: {
       type: Boolean,
       required: true,
+    },
+  },
+  methods: {
+    ...mapMutations(['removeTask', 'changeCompleted']),
+    deleteTask() {
+      this.removeTask(this.id);
+    },
+    checkedTask() {
+      this.changeCompleted(this.id);
     },
   },
 };
@@ -40,14 +63,34 @@ export default {
     line-height: 1.75rem;
     position: relative;
     cursor: pointer;
+    &.completed {
+      background-color: green;
+    }
   }
   .taskInput {
     appearance: none;
     &:checked + .taskBox {
       background: $orangeLight url(../../assets/img/check.svg) center no-repeat;
     }
+    &:checked ~ .taskLine::after {
+      width: 100%;
+    }
     &:focus-visible + .taskBox {
       box-shadow: 0 0 0 2px $colorFocus;
+    }
+  }
+  .taskLine {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $mainDarkColor;
+      transform: translateY(-50%);
+      transition: width 0.3s;
     }
   }
   .taskBox {
@@ -93,7 +136,7 @@ export default {
     &:before {
       transform: translate(-50%, -50%) rotate(45deg);
     }
-    &:focus {
+    &:focus-visible {
       box-shadow: 0 0 0 2px $colorFocus;
     }
     &:hover,
