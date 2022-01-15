@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { v4 as uuidv4 } from 'uuid';
 
 Vue.use(Vuex);
 
@@ -8,17 +9,17 @@ export default new Vuex.Store({
     filter: 'All',
     tasks: [
       {
-        id: 1,
+        id: uuidv4(),
         title: 'Task 1',
         isCompleted: true,
       },
       {
-        id: 2,
+        id: uuidv4(),
         title: 'Task 2',
         isCompleted: false,
       },
       {
-        id: 3,
+        id: uuidv4(),
         title: 'Task 2',
         isCompleted: false,
       },
@@ -41,13 +42,13 @@ export default new Vuex.Store({
   mutations: {
     addTask(state, titleTask) {
       state.tasks.push({
-        id: Date.now(),
+        id: uuidv4(),
         title: titleTask,
         isCompleted: false,
       });
     },
-    removeTask(state, index) {
-      state.tasks.splice(index, 1);
+    removeTask(state, id) {
+      state.tasks = state.tasks.filter(task => task.id !== id);
     },
     changeCompleted(state, id) {
       state.tasks.forEach(task => {

@@ -14,9 +14,10 @@ export default {
   methods: {
     ...mapMutations(['addTask']),
     addTaskItem() {
-      if (this.nameTask === '' || this.nameTask.trim() === '') return;
-      this.addTask(this.nameTask);
-      this.nameTask = '';
+      if (this.nameTask.trim()) {
+        this.addTask(this.nameTask);
+        this.nameTask = '';
+      }
     },
   },
 };

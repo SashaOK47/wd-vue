@@ -5,12 +5,11 @@
     </div>
     <transition-group name="task">
       <TaskItem
-        v-for="(task, index) in getTasksFiltered"
+        v-for="task in getTasksFiltered"
         :key="task.id"
         :title="task.title"
         :id="task.id"
         :isCompleted="task.isCompleted"
-        :index="index"
       />
     </transition-group>
   </ul>

@@ -5,7 +5,7 @@
         :class="$style.taskInput"
         type="checkbox"
         :checked="isCompleted"
-        @change="test"
+        @change="checkedTask"
       />
       <span :class="$style.taskBox"></span>
       <span :class="$style.taskLine">{{ title }}</span>
@@ -22,7 +22,7 @@ import { mapMutations } from 'vuex';
 export default {
   props: {
     id: {
-      type: Number,
+      type: String,
       required: true,
     },
     title: {
@@ -33,17 +33,13 @@ export default {
       type: Boolean,
       required: true,
     },
-    index: {
-      type: Number,
-      required: true,
-    },
   },
   methods: {
     ...mapMutations(['removeTask', 'changeCompleted']),
     deleteTask() {
-      this.removeTask(this.index);
+      this.removeTask(this.id);
     },
-    test() {
+    checkedTask() {
       this.changeCompleted(this.id);
     },
   },
