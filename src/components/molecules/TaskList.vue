@@ -1,15 +1,21 @@
 <template>
   <ul :class="$style.tasks">
-    <div :class="$style.tasksEmpty" v-if="!getTasksFiltered.length">
+    <div :class="$style.tasksEmpty" v-if="getTasksFiltered.length < 1">
       The task list is empty! Add a new task!
     </div>
-    <transition-group name="TaskList">
+    <transition-group
+      :enter-class="$style.enter"
+      :leave-to-class="$style.leaveTo"
+      :enter-active-class="$style.enterActive"
+      :leave-active-class="$style.leaveActive"
+    >
       <TaskItem
-        v-for="task in getTasksFiltered"
+        v-for="(task, index) in getTasksFiltered"
         :key="task.id"
         :title="task.title"
         :id="task.id"
         :isCompleted="task.isCompleted"
+        :index="index"
       />
     </transition-group>
   </ul>
@@ -22,6 +28,7 @@ export default {
   computed: mapGetters(['getTasksFiltered']),
 };
 </script>
+
 <style lang="scss" module>
 @import '@/assets/scss/main.scss';
 ::-webkit-scrollbar {
@@ -47,16 +54,14 @@ export default {
     color: $mainFontColorOpacity;
     text-align: center;
   }
-}
-</style>
-<style scoped>
-.TaskList-enter-active,
-.TaskList-leave-to {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.TaskList-enter,
-.TaskList-leave-to {
-  opacity: 0;
-  transform: translatex(-30px);
+  .enterActive,
+  .leaveTo {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .enter,
+  .leaveTo {
+    opacity: 0;
+    transform: translatex(-30px);
+  }
 }
 </style>
