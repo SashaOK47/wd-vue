@@ -23,6 +23,30 @@ export default new Vuex.Store({
       },
     ],
   },
+  getters: {
+    getTasks(state) {
+      return state.tasks;
+    },
+    getTasksCount(state) {
+      return state.tasks.length;
+    },
+    getTasksFiltered(state) {
+      if (state.filter == 'All') {
+        return state.tasks;
+      } else if (state.filter == 'Active') {
+        return state.tasks.filter(task => !task.isCompleted);
+      } else if (state.filter == 'Completed') {
+        return state.tasks.filter(task => task.isCompleted);
+      }
+      return state.tasks;
+    },
+    getCompleted(state) {
+      return state.tasks.filter(task => task.isCompleted).length;
+    },
+    getTabs(state) {
+      return state.tabs;
+    },
+  },
   mutations: {
     addTask(state, titleTask) {
       state.tasks.push({
@@ -54,30 +78,6 @@ export default new Vuex.Store({
       if (localTasks) {
         commit('setTaskLocalStorage', JSON.parse(localTasks));
       }
-    },
-  },
-  getters: {
-    getTasks(state) {
-      return state.tasks;
-    },
-    getTasksCount(state) {
-      return state.tasks.length;
-    },
-    getTasksFiltered(state) {
-      if (state.filter == 'All') {
-        return state.tasks;
-      } else if (state.filter == 'Active') {
-        return state.tasks.filter(task => !task.isCompleted);
-      } else if (state.filter == 'Completed') {
-        return state.tasks.filter(task => task.isCompleted);
-      }
-      return state.tasks;
-    },
-    getCompleted(state) {
-      return state.tasks.filter(task => task.isCompleted).length;
-    },
-    getTabs(state) {
-      return state.tabs;
     },
   },
 });
