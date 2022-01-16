@@ -1,6 +1,6 @@
 <template>
   <ul class="tasks">
-    <div class="tasks__empty" v-if="getTasksFiltered.length < 1">
+    <div class="tasks__empty" v-if="!getTasksFiltered.length">
       The task list is empty! Add a new task!
     </div>
     <transition-group name="tasks">
