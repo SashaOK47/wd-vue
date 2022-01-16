@@ -7,23 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     filter: 'All',
-    tasks: [
-      {
-        id: uuidv4(),
-        title: 'Task 1',
-        isCompleted: true,
-      },
-      {
-        id: uuidv4(),
-        title: 'Task 2',
-        isCompleted: false,
-      },
-      {
-        id: uuidv4(),
-        title: 'Task 2',
-        isCompleted: false,
-      },
-    ],
+    tasks: [],
     tabs: [
       {
         title: 'All',
@@ -59,6 +43,17 @@ export default new Vuex.Store({
     },
     filterTasks(state, tabTitle) {
       state.filter = tabTitle;
+    },
+    setTaskLocalStorage(state, tasks) {
+      state.tasks = tasks;
+    },
+  },
+  actions: {
+    tasksFromLocaSorage: ({ commit }) => {
+      const localTasks = localStorage.getItem('tasks');
+      if (localTasks) {
+        commit('setTaskLocalStorage', JSON.parse(localTasks));
+      }
     },
   },
   getters: {
