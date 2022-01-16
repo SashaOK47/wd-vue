@@ -7,23 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     filter: 'All',
-    tasks: [
-      {
-        id: uuidv4(),
-        title: 'Task 1',
-        isCompleted: true,
-      },
-      {
-        id: uuidv4(),
-        title: 'Task 2',
-        isCompleted: false,
-      },
-      {
-        id: uuidv4(),
-        title: 'Task 2',
-        isCompleted: false,
-      },
-    ],
+    tasks: [],
     tabs: [
       {
         title: 'All',
@@ -38,28 +22,6 @@ export default new Vuex.Store({
         isChecked: false,
       },
     ],
-  },
-  mutations: {
-    addTask(state, titleTask) {
-      state.tasks.push({
-        id: uuidv4(),
-        title: titleTask,
-        isCompleted: false,
-      });
-    },
-    removeTask(state, id) {
-      state.tasks = state.tasks.filter(task => task.id !== id);
-    },
-    changeCompleted(state, id) {
-      state.tasks.forEach(task => {
-        if (task.id === id) {
-          task.isCompleted = !task.isCompleted;
-        }
-      });
-    },
-    filterTasks(state, tabTitle) {
-      state.filter = tabTitle;
-    },
   },
   getters: {
     getTasks(state) {
@@ -83,6 +45,39 @@ export default new Vuex.Store({
     },
     getTabs(state) {
       return state.tabs;
+    },
+  },
+  mutations: {
+    addTask(state, titleTask) {
+      state.tasks.push({
+        id: uuidv4(),
+        title: titleTask,
+        isCompleted: false,
+      });
+    },
+    removeTask(state, id) {
+      state.tasks = state.tasks.filter(task => task.id !== id);
+    },
+    changeCompleted(state, id) {
+      state.tasks.forEach(task => {
+        if (task.id === id) {
+          task.isCompleted = !task.isCompleted;
+        }
+      });
+    },
+    filterTasks(state, tabTitle) {
+      state.filter = tabTitle;
+    },
+    setTaskLocalStorage(state, tasks) {
+      state.tasks = tasks;
+    },
+  },
+  actions: {
+    tasksFromLocaSorage: ({ commit }) => {
+      const localTasks = localStorage.getItem('tasks');
+      if (localTasks) {
+        commit('setTaskLocalStorage', JSON.parse(localTasks));
+      }
     },
   },
 });

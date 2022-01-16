@@ -1,9 +1,9 @@
 <template>
-  <ul class="tasks">
-    <div class="tasks__empty" v-if="getTasksFiltered.length < 1">
+  <ul :class="$style.tasks">
+    <div :class="$style.tasksEmpty" v-if="!getTasksFiltered.length">
       The task list is empty! Add a new task!
     </div>
-    <transition-group name="task">
+    <transition-group name="TaskList">
       <TaskItem
         v-for="task in getTasksFiltered"
         :key="task.id"
@@ -22,7 +22,7 @@ export default {
   computed: mapGetters(['getTasksFiltered']),
 };
 </script>
-<style lang="scss">
+<style lang="scss" module>
 @import '@/assets/scss/main.scss';
 ::-webkit-scrollbar {
   width: 0.6rem;
@@ -40,7 +40,7 @@ export default {
   overflow-y: auto;
   list-style: none;
   width: 100%;
-  &__empty {
+  .tasksEmpty {
     padding: 1rem;
     font-size: 2rem;
     line-height: 2.3rem;
@@ -48,12 +48,14 @@ export default {
     text-align: center;
   }
 }
-.task-enter-active,
-.task-leave-to {
+</style>
+<style scoped>
+.TaskList-enter-active,
+.TaskList-leave-to {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.task-enter,
-.task-leave-to {
+.TaskList-enter,
+.TaskList-leave-to {
   opacity: 0;
   transform: translatex(-30px);
 }
