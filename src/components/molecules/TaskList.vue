@@ -10,12 +10,11 @@
       :leave-active-class="$style.leaveActive"
     >
       <TaskItem
-        v-for="(task, index) in getTasksFiltered"
+        v-for="task in getTasksFiltered"
         :key="task.id"
         :title="task.title"
         :id="task.id"
         :isCompleted="task.isCompleted"
-        :index="index"
       />
     </transition-group>
   </ul>
@@ -46,7 +45,7 @@ export default {
   overflow-y: auto;
   list-style: none;
   width: 100%;
-  tasksEmpty {
+  .tasksEmpty {
     padding: 1rem;
     font-size: 2rem;
     line-height: 2.3rem;
