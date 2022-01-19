@@ -52,7 +52,7 @@ describe('testing store', () => {
     expect(store.state.filter).toBe(store.state.tabs[0].title);
   });
   it('setTaskLocalStorage', () => {
-    store.commit('setTaskLocalStorage');
+    store.commit('setTaskLocalStorage', store.state.tasks);
     expect(store.state.tasks.length).toBe(3);
   });
   it('tasksFromLocaSorage', () => {

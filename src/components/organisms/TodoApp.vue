@@ -11,6 +11,14 @@ import Content from '@/components/organisms/Content';
 import Footer from '@/components/organisms/Footer';
 export default {
   components: { Header, Content, Footer },
+  watch: {
+    '$store.state.tasks.tasks': {
+      handler: updateTasksList => {
+        localStorage.setItem('tasks', JSON.stringify(updateTasksList));
+      },
+      deep: true,
+    },
+  },
   mounted() {
     this.$store.dispatch('tasksFromLocaSorage');
   },

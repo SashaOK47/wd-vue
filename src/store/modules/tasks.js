@@ -68,13 +68,16 @@ export default {
     filterTasks(state, tabTitle) {
       state.filter = tabTitle;
     },
-    setTaskLocalStorage(state) {
-      state.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    setTaskLocalStorage(state, tasks) {
+      state.tasks = tasks;
     },
   },
   actions: {
     tasksFromLocaSorage: ({ commit }) => {
-      commit('setTaskLocalStorage');
+      const localTasks = localStorage.getItem('tasks');
+      if (localTasks) {
+        commit('setTaskLocalStorage', JSON.parse(localTasks));
+      }
     },
   },
 };
