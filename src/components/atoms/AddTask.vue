@@ -1,6 +1,6 @@
 <template>
   <form :class="$style.addTask" @submit.prevent="addTaskItem">
-    <input type="text" placeholder="Add a new task" v-model="nameTask" />
+    <input type="text" placeholder="Add a new task" v-model.trim="nameTask" />
   </form>
 </template>
 <script>
@@ -14,10 +14,8 @@ export default {
   methods: {
     ...mapMutations(['addTask']),
     addTaskItem() {
-      if (this.nameTask.trim()) {
-        this.addTask(this.nameTask);
-        this.nameTask = '';
-      }
+      this.addTask(this.nameTask);
+      this.nameTask = '';
     },
   },
 };

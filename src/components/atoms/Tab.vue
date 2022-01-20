@@ -17,11 +17,9 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
     },
     isChecked: {
       type: Boolean,
-      required: true,
     },
   },
   methods: {

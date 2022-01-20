@@ -1,9 +1,14 @@
 <template>
   <ul :class="$style.tasks">
-    <div :class="$style.tasksEmpty" v-if="!getTasksFiltered.length">
+    <div :class="$style.tasksEmpty" v-if="getTasksFiltered.length < 1">
       The task list is empty! Add a new task!
     </div>
-    <transition-group name="TaskList">
+    <transition-group
+      :enter-class="$style.enter"
+      :leave-to-class="$style.leaveTo"
+      :enter-active-class="$style.enterActive"
+      :leave-active-class="$style.leaveActive"
+    >
       <TaskItem
         v-for="task in getTasksFiltered"
         :key="task.id"
@@ -48,14 +53,12 @@ export default {
     text-align: center;
   }
 }
-</style>
-<style scoped>
-.TaskList-enter-active,
-.TaskList-leave-to {
+.enterActive,
+.leaveTo {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.TaskList-enter,
-.TaskList-leave-to {
+.enter,
+.leaveTo {
   opacity: 0;
   transform: translatex(-30px);
 }
